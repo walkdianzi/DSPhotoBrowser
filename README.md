@@ -7,7 +7,7 @@
 #Demo截图
 - 微信
 
-![朋友圈图片浏览类型](https://github.com/walkdianzi/DSPhotoBrowser/blob/master/DSPhotoBrowser/Snapshots/contentOffset.gif)
+[![朋友圈图片浏览类型]](https://github.com/walkdianzi/DSPhotoBrowser/blob/master/DSPhotoBrowser/Snapshots/contentOffset.gif)
 
 
 #如何使用
