@@ -28,21 +28,19 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pic.meizitu.com/wp-content/uploads/2015a/11/11/02.jpg"]placeholderImage:nil];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClick:)];
+    [imageView addGestureRecognizer:tapGesture];
     [self.view addSubview:imageView];
     
     DSPhotoModel *photoModel = [[DSPhotoModel alloc] init];
     photoModel.image_HD_U = @"http://pic.meizitu.com/wp-content/uploads/2015a/11/11/02.jpg";
     photoModel.sourceImageView = imageView;
-    _photoModels = @[photoModel,photoModel];
-    
-    UIButton *ab = [[UIButton alloc] initWithFrame:CGRectMake(100, 300, 50, 50)];
-    ab.backgroundColor = [UIColor redColor];
-    [ab addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:ab];
+    _photoModels = @[photoModel];
 }
 
 
--(void)click:(UIButton *)sender{
+-(void)imageViewClick:(id)sender{
     
     
     DSPhotoBrowserVC *VC = [[DSPhotoBrowserVC alloc] init];
