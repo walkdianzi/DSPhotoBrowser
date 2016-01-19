@@ -198,9 +198,8 @@
     [UIView animateWithDuration:DSPhotoBrowserShowImageAnimationDuration animations:^{
         //将点击的临时imageview动画放大到和目标imageview一样大
         tempView.frame = targetTemp;
-        if (self.isNavigationBar) {
-            _navigationBarView.alpha = 1;
-        }
+        _navigationBarView.alpha = 1;
+        
     } completion:^(BOOL finished) {
         //动画完成后，删除临时imageview，让目标imageview显示
         [tempView removeFromSuperview];
