@@ -13,6 +13,10 @@
 #如何使用
 
 
+#参考
+[HZPhotoBrowser](https://github.com/chennyhuang/HZPhotoBrowser)
+[CorePhotoBroswerVC](https://github.com/CharlinFeng/CorePhotoBroswerVC)
+
 #最后
 - 如果我的项目对你有帮助欢迎 Star  
 - 如果在使用过程中遇到BUG，希望你能Issues我
