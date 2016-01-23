@@ -14,7 +14,7 @@
 
 
 #参考
-[HZPhotoBrowser](https://github.com/chennyhuang/HZPhotoBrowser)
+[HZPhotoBrowser](https://github.com/chennyhuang/HZPhotoBrowser)   
 [CorePhotoBroswerVC](https://github.com/CharlinFeng/CorePhotoBroswerVC)
 
 #最后
