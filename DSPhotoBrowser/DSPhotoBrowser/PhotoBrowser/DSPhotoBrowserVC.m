@@ -20,6 +20,9 @@
     UILabel              *_indexLabel;        //照片张数及第几张label
     
     CGRect                _contentRect;       //内容栏的rect
+    
+    
+    BOOL                  _lastVCNavigationBarHidden;
 }
 
 @end
@@ -41,12 +44,23 @@
     
     [super viewDidLoad];
     
-    
     [self initNavigationBar];
     [self setupScrollView];
     [self initIndexLabel];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    _lastVCNavigationBarHidden = _handleVC.navigationController.navigationBarHidden;
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:_lastVCNavigationBarHidden];
+}
 
 #pragma mark - Init Methon
 
@@ -81,9 +95,9 @@
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.pagingEnabled = YES;
-    _scrollView.bounds = CGRectMake(0, 0, _contentRect.size.width + DSPhotoBrowserImageViewMargin * 2, _contentRect.size.height);
+    _scrollView.frame = CGRectMake(0, 0, _contentRect.size.width + DSPhotoBrowserImageViewMargin * 2, _contentRect.size.height);
     _scrollView.center = CGPointMake(_contentRect.size.width *0.5, _contentRect.size.height *0.5);
-    [_contentView addSubview:_scrollView];
+    [self.view addSubview:_scrollView];
     
     for (int i = 0; i < [self.photoModels count]; i++) {
         
@@ -133,8 +147,9 @@
 - (void)show{
     
     switch (_type) {
-        case DSPhotoBrowserTypePush:
-            
+        case DSPhotoBrowserTypePush:{
+            [self pushInPhotoVC];
+        }
             break;
         case DSPhotoBrowserTypeTransform:
             break;
@@ -146,6 +161,25 @@
         default:
             break;
     }
+}
+
+- (void)pushInPhotoVC{
+    
+    if (!_handleVC) {
+        return;
+    }
+    //当前view的大小为屏幕的大小
+    self.view.frame = [UIScreen mainScreen].bounds;
+    
+    
+    UIWindow  *window = _handleVC.view.window;
+    if (!self.isNavigationBar) {
+        //隐藏状态栏
+        window.windowLevel = UIWindowLevelStatusBar+10.0f;
+    }
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    [_handleVC.navigationController pushViewController:self animated:YES];
 }
 
 - (void)fadeInPhotoVC{
@@ -220,7 +254,7 @@
     
     switch (self.type) {
         case DSPhotoBrowserTypePush:
-            
+            [self dismissOutTypePush];
             break;
         case DSPhotoBrowserTypeTransform:
             break;
@@ -230,6 +264,12 @@
         default:
             break;
     }
+}
+
+- (void)dismissOutTypePush{
+    
+    self.view.window.windowLevel = UIWindowLevelNormal;//显示状态栏
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)dismissOutTypeFadeIn{

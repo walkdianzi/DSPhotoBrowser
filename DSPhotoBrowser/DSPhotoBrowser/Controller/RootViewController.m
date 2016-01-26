@@ -29,7 +29,8 @@
                             @"FadeInType"
                         ],
                @"微信":@[
-                            @"WeixinOne"
+                            @"WeixinOne",
+                            @"WeixinTwo"
                        ],
              };
     
@@ -42,7 +43,8 @@
                             ],
                    
                    @"微信":@[
-                             @"朋友圈列表里的浏览图片"
+                             @"朋友圈列表里的浏览图片",
+                             @"微信文章浏览图片"
                            ],
                    };
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133A5EF61C578CF500789E75 /* WeixinTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A5EF51C578CF500789E75 /* WeixinTwoViewController.m */; };
 		1366CFD81C477BA800A6D178 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFD71C477BA800A6D178 /* main.m */; };
 		1366CFDB1C477BA800A6D178 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFDA1C477BA800A6D178 /* AppDelegate.m */; };
 		1366CFDE1C477BA800A6D178 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFDD1C477BA800A6D178 /* ViewController.m */; };
@@ -66,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		133A5EF41C578CF500789E75 /* WeixinTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinTwoViewController.h; sourceTree = "<group>"; };
+		133A5EF51C578CF500789E75 /* WeixinTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeixinTwoViewController.m; sourceTree = "<group>"; };
 		1366CFD31C477BA800A6D178 /* DSPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1366CFD71C477BA800A6D178 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1366CFD91C477BA800A6D178 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 			children = (
 				1366D0811C4C92A300A6D178 /* WeixinOneViewController.h */,
 				1366D0821C4C92A300A6D178 /* WeixinOneViewController.m */,
+				133A5EF41C578CF500789E75 /* WeixinTwoViewController.h */,
+				133A5EF51C578CF500789E75 /* WeixinTwoViewController.m */,
 			);
 			path = CustomAppVC;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 				1366D05D1C47A4E700A6D178 /* UIView+Toast.m in Sources */,
 				1366D05C1C47A4E700A6D178 /* UIView+WebCacheOperation.m in Sources */,
 				1366D0541C47A4E700A6D178 /* SDWebImageManager.m in Sources */,
+				133A5EF61C578CF500789E75 /* WeixinTwoViewController.m in Sources */,
 				1366D0631C48899900A6D178 /* DSNavigationBarView.m in Sources */,
 				1366D0601C47A96100A6D178 /* DSPhotoModel.m in Sources */,
 				1366D0891C4C996900A6D178 /* StyledPageControl.m in Sources */,
