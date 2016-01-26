@@ -9,6 +9,8 @@
 
 ![朋友圈图片浏览类型](https://github.com/walkdianzi/DSPhotoBrowser/blob/master/DSPhotoBrowser/Snapshots/contentOffset.gif)
 
+- 微信文章图片浏览类型
+![微信文章图片浏览类型](https://github.com/walkdianzi/DSPhotoBrowser/blob/master/DSPhotoBrowser/Snapshots/contentOffset2.gif)
 
 #如何使用
 
