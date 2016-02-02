@@ -20,44 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DSPhotoBrowser/PhotoBrowser/CustomBrowserVC/WXPhotoBrowserVC.m"
-            timestampString = "476098744.371595"
+            timestampString = "476109498.428307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-fadeInPhotoVC"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DSPhotoBrowser/PhotoBrowser/CustomBrowserVC/WXPhotoBrowserVC.m"
-            timestampString = "476099047.587392"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "-setupImageOfImageViewForIndex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DSPhotoBrowser/PhotoBrowser/DSPhotoBrowserView.m"
-            timestampString = "476099318.660917"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-setImageWithURL:placeholderImage:withOrginImage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

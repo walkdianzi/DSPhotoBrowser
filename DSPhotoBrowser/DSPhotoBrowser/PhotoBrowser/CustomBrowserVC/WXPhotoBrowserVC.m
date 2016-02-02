@@ -108,8 +108,9 @@
         DSPhotoBrowserView *view = _scrollView.subviews[index];
         if (view.beginLoadingImage) return;
         
+        //判断是否有缓存，如果有缓存，则直接执行放大动画
         if (([[SDImageCache sharedImageCache] diskImageExistsWithKey:photoModel.image_HD_U])) {
-            [view.imageview setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:photoModel.image_HD_U]];
+            [view setImageWithURL:[NSURL URLWithString:photoModel.image_HD_U] placeholderImage:nil];
         }else{
             [view setImageWithURL:[NSURL URLWithString:photoModel.image_HD_U] placeholderImage:nil withOrginImage:photoModel.sourceImageView];
         }
@@ -279,17 +280,23 @@
     CGRect targetTemp = [photoModel.sourceImageView convertRect:photoModel.sourceImageView.bounds toView:_contentView];
     //创建临时ImageView用于动画
     UIImageView *tempImageView = [[UIImageView alloc] init];
-    tempImageView.image = currentImageView.image;
     tempImageView.contentMode = photoModel.sourceImageView.contentMode;
     tempImageView.clipsToBounds = photoModel.sourceImageView.clipsToBounds;
-    CGFloat tempImageSizeH = tempImageView.image.size.height;
-    CGFloat tempImageSizeW = tempImageView.image.size.width;
     
-    CGFloat tempImageViewH = (tempImageSizeH * kAPPWidth)/(tempImageSizeW?:0.1);
-    if (tempImageViewH < _contentRect.size.height) {//图片高度<屏幕高度
-        tempImageView.frame = CGRectMake(0, (_contentRect.size.height - tempImageViewH)*0.5, kAPPWidth, tempImageViewH);
-    } else {
-        tempImageView.frame = CGRectMake(0, 0, kAPPWidth, tempImageViewH);
+    //已经有缓存，则从大图动画到小图。无缓存，还是从小图到小图
+    if ([[SDImageCache sharedImageCache] diskImageExistsWithKey:photoModel.image_HD_U]) {
+        tempImageView.image = currentImageView.image;
+        CGFloat tempImageSizeH = tempImageView.image.size.height;
+        CGFloat tempImageSizeW = tempImageView.image.size.width;
+        CGFloat tempImageViewH = (tempImageSizeH * kAPPWidth)/(tempImageSizeW?:0.1);
+        if (tempImageViewH < _contentRect.size.height) {//图片高度<屏幕高度
+            tempImageView.frame = CGRectMake(0, (_contentRect.size.height - tempImageViewH)*0.5, kAPPWidth, tempImageViewH);
+        } else {
+            tempImageView.frame = CGRectMake(0, 0, kAPPWidth, tempImageViewH);
+        }
+    }else{
+        tempImageView.image = photoModel.sourceImageView.image;
+        tempImageView.frame = CGRectMake((kAPPWidth - targetTemp.size.width)/2, (_contentRect.size.height - targetTemp.size.height)*0.5, targetTemp.size.width, targetTemp.size.height);
     }
     [_contentView addSubview:tempImageView];
     

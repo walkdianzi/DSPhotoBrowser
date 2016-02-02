@@ -160,13 +160,13 @@
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder withOrginImage:(UIImageView *)orginImageView{
     
-    //微信里用到的小原图
+    //微信里用到的小原图，加载失败的时候点击重新加载，orginImageView为nil，不会执行下面这段
     if (orginImageView != nil) {
 
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, orginImageView.frame.size.width, orginImageView.frame.size.height)];
         imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [imageView setImage:orginImageView.image];
-        imageView.contentMode = orginImageView.contentMode;
+        imageView.contentMode = orginImageView.contentMode;     //mode为原小图的mode
         imageView.clipsToBounds = orginImageView.clipsToBounds;
         
         UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
