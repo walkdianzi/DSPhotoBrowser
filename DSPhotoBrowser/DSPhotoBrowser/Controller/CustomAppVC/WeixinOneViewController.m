@@ -57,7 +57,7 @@
         [contentScrollView addSubview:imageView];
         
         DSPhotoModel *photoModel = [[DSPhotoModel alloc] init];
-        photoModel.image_HD_U = @"http://pic.meizitu.com/wp-content/uploads/2015a/11/11/05.jpg";
+        photoModel.image_HD_U = [imageArray objectAtIndex:i];
         photoModel.sourceImageView = imageView;
         photoModel.image = imageView.image;
         [_photoModels addObject:photoModel];
