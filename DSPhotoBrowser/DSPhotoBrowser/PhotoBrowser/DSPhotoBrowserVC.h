@@ -32,11 +32,4 @@
 - (void)show;
 - (void)dismiss;
 
-
-//override
-- (void)initIndexLabel;
-- (void)showIndexLabel;
-- (void)hideIndexLabel;
-- (void)setIndexLabelNumber:(NSInteger)index;
-
 @end

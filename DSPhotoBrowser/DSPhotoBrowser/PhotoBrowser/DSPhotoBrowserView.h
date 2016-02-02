@@ -22,4 +22,6 @@
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder;
 
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder withOrginImage:(UIImageView *)orginImageView;
+
 @end

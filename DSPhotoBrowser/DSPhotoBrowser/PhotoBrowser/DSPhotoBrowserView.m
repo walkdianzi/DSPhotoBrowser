@@ -19,6 +19,7 @@
 }
 
 @property (nonatomic,strong) DSWaitingView *waitingView;
+@property (nonatomic,strong) UIImageView   *orginImageView;
 @property (nonatomic,strong) UITapGestureRecognizer *doubleTap;
 @property (nonatomic,strong) UITapGestureRecognizer *singleTap;
 @property (nonatomic,strong) UILongPressGestureRecognizer *longPressTap;
@@ -152,8 +153,30 @@
     _waitingView.progress = progress;
 }
 
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
-{
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder{
+    
+    [self setImageWithURL:url placeholderImage:placeholder withOrginImage:nil];
+}
+
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder withOrginImage:(UIImageView *)orginImageView{
+    
+    //微信里用到的小原图
+    if (orginImageView != nil) {
+
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, orginImageView.frame.size.width, orginImageView.frame.size.height)];
+        imageView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        [imageView setImage:orginImageView.image];
+        imageView.contentMode = orginImageView.contentMode;
+        imageView.clipsToBounds = orginImageView.clipsToBounds;
+        
+        UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+        maskView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
+        [imageView addSubview:maskView];
+        
+        self.orginImageView = imageView;
+        [self addSubview:imageView];
+    }
+    
     if (_reloadButton) {
         [_reloadButton removeFromSuperview];
     }
@@ -174,7 +197,7 @@
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        [_waitingView removeFromSuperview];
+        [strongSelf.waitingView removeFromSuperview];
         
         if (error) {
             //图片加载失败的处理，此处可以自定义各种操作（...）
@@ -194,12 +217,26 @@
             [self addSubview:button];
             return;
         }
+        if (strongSelf.orginImageView) {
+            [strongSelf.imageview setHidden:YES];
+            strongSelf.orginImageView.contentMode = UIViewContentModeScaleAspectFit;
+            for (UIView *subview in strongSelf.orginImageView.subviews) {
+                [subview removeFromSuperview];
+            }
+            [UIView animateWithDuration:DSPhotoBrowserShowImageAnimationDuration animations:^{
+                
+                strongSelf.orginImageView.frame = strongSelf.imageview.frame;
+            } completion:^(BOOL finished) {
+                [strongSelf.imageview setHidden:NO];
+                [strongSelf.orginImageView removeFromSuperview];
+            }];
+        }
         strongSelf.hasLoadedImage = YES;//图片加载成功
     }];
 }
 
-- (void)reloadImage
-{
+- (void)reloadImage{
+    
     [self setImageWithURL:_imageUrl placeholderImage:_placeHolderImage];
 }
 
