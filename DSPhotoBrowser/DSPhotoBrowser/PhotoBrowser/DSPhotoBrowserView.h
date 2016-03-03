@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DSPhotoBrowserConfig.m"
 @interface DSPhotoBrowserView : UIView
 
 @property (nonatomic,strong) UIScrollView *scrollview;
 @property (nonatomic,strong) UIImageView *imageview;
 @property (nonatomic, assign) CGFloat progress;
-
+@property (nonatomic, assign) DSPhotoBrowserType type;
 @property (nonatomic, assign) BOOL beginLoadingImage;
 @property (nonatomic, assign) BOOL hasLoadedImage;    //图片加载成功
 

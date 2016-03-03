@@ -245,6 +245,8 @@
     self.view.backgroundColor = [UIColor blackColor];
 }
 
+
+
 - (void)dismiss{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(dismissAtIndex:)]) {

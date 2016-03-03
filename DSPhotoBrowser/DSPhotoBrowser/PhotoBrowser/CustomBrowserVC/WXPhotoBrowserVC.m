@@ -11,7 +11,7 @@
 #import "DSPhotoBrowserView.h"
 #import "DSPhotoModel.h"
 #import "SDImageCache.h"
-
+#import "UIImageView+WebCache.h"
 @interface WXPhotoBrowserVC()<UIScrollViewDelegate>{
     
     UIScrollView         *_scrollView;        //主scrollView
@@ -84,7 +84,7 @@
         CGFloat x = DSPhotoBrowserImageViewMargin + i * (DSPhotoBrowserImageViewMargin * 2 + kAPPWidth);
         DSPhotoBrowserView *view = [[DSPhotoBrowserView alloc] initWithFrame:CGRectMake(x, 0, kAPPWidth, _scrollView.bounds.size.height)];
         view.imageview.tag = i;
-        
+        view.type = self.type;
         //处理单击
         __weak __typeof(self)weakSelf = self;
         view.singleTapBlock = ^(UITapGestureRecognizer *recognizer){
@@ -143,6 +143,10 @@
             [self fadeInPhotoVC];
         }
             break;
+        case DSPhotoBrowserTypeWeChat:{
+            [self fadeInPhotoVC];
+        }
+            break;
         default:
             break;
     }
@@ -190,14 +194,13 @@
     DSPhotoModel *photoModel = [self.photoModels objectAtIndex:self.currentImageIndex];
     photoModel.sourceImageView.hidden = YES;
     
-    
     if ([[SDImageCache sharedImageCache] diskImageExistsWithKey:photoModel.image_HD_U]) {
         
         //创建临时ImageView用于动画
         UIImageView *tempView = [[UIImageView alloc] init];
         //将rect由rect所在视图转换到目标视图view中，返回在目标视图view中的rect
         tempView.frame = [photoModel.sourceImageView convertRect:photoModel.sourceImageView.bounds toView:_contentView];
-        tempView.image = [photoModel.sourceImageView.image copy];
+        [tempView sd_setImageWithURL:[NSURL URLWithString:photoModel.image_HD_U] placeholderImage:photoModel.sourceImageView.image options:SDWebImageRetryFailed];
         tempView.contentMode = UIViewContentModeScaleAspectFit;
         [_contentView addSubview:tempView];
         
@@ -236,6 +239,7 @@
     }
 }
 
+
 - (void)dismiss{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(dismissAtIndex:)]) {
@@ -249,7 +253,7 @@
             break;
         case DSPhotoBrowserTypeTransform:
             break;
-        case DSPhotoBrowserTypeFadeIn:
+        case DSPhotoBrowserTypeFadeIn:case DSPhotoBrowserTypeWeChat:
             [self dismissOutTypeFadeIn];
             break;
         default:

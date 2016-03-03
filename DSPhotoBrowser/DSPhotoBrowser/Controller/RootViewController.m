@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "DSProgressView.h"
 @interface RootViewController(){
     
     NSDictionary *_itemsName;
@@ -30,7 +30,8 @@
                         ],
                @"微信":@[
                             @"WeixinOne",
-                            @"WeixinTwo"
+                            @"WeixinTwo",
+                            @"WeixinTimeLine"
                        ],
              };
     
@@ -44,11 +45,13 @@
                    
                    @"微信":@[
                              @"朋友圈列表里的浏览图片",
-                             @"微信文章浏览图片"
+                             @"微信文章浏览图片",
+                             @"高仿",
                            ],
                    };
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     [self.tableView reloadData];
+        
 }
 
 #pragma mark - Table view data source

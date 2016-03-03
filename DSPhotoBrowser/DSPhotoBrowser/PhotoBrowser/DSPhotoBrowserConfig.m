@@ -11,6 +11,7 @@ typedef enum{
     DSPhotoBrowserTypePush,
     DSPhotoBrowserTypeTransform,   //从当前位置放大
     DSPhotoBrowserTypeFadeIn,      //渐现
+    DSPhotoBrowserTypeWeChat,      //微信Style
     
 }DSPhotoBrowserType;
 
