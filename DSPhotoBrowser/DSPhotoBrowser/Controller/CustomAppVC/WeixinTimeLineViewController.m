@@ -29,11 +29,11 @@
     [self.view addSubview:contentScrollView];
     
     NSArray *imageArray = @[@"http://7xj2go.com2.z0.glb.qiniucdn.com/small_01.jpg",
-                            @"hhttp://7xj2go.com2.z0.glb.qiniucdn.com/small_02.jpg",
+                            @"http://7xj2go.com2.z0.glb.qiniucdn.com/small_02.jpg",
                             @"http://7xj2go.com2.z0.glb.qiniucdn.com/small_03.jpg",
                             @"http://7xj2go.com2.z0.glb.qiniucdn.com/small_04.jpg"];
     NSArray *highDefinationImages = @[@"http://7xj2go.com2.z0.glb.qiniucdn.com/big_01.jpg",
-                                      @"hhttp://7xj2go.com2.z0.glb.qiniucdn.com/big_02.jpg",
+                                      @"http://7xj2go.com2.z0.glb.qiniucdn.com/big_02.jpg",
                                       @"http://7xj2go.com2.z0.glb.qiniucdn.com/big_03.jpg",
                                       @"http://7xj2go.com2.z0.glb.qiniucdn.com/big_04.jpg"];
     
