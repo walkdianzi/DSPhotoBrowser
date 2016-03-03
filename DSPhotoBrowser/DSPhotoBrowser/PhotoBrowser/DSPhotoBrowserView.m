@@ -11,7 +11,9 @@
 #import "DSPhotoBrowserConfig.m"
 #import "UIImageView+WebCache.h"
 #import "UIView+Toast.h"
+#import "DSProgressView.h"
 
+#define kProgressViewTag 123456
 @interface DSPhotoBrowserView()<UIScrollViewDelegate, UIActionSheetDelegate>{
     
     UIActivityIndicatorView *_indicatorView;
@@ -182,23 +184,35 @@
     }
     _imageUrl = url;
     _placeHolderImage = placeholder;
-    //添加进度指示器
-    DSWaitingView *waitingView = [[DSWaitingView alloc] init];
-    waitingView.mode = DSWaitingViewModeLoopDiagram;
-    waitingView.center = CGPointMake(kAPPWidth * 0.5, KAppHeight * 0.5);
-    self.waitingView = waitingView;
-    [self addSubview:waitingView];
     
+    if (self.type != DSPhotoBrowserTypeWeChat) {
+        //添加进度指示器
+        DSWaitingView *waitingView = [[DSWaitingView alloc] init];
+        waitingView.mode = DSWaitingViewModeLoopDiagram;
+        waitingView.center = CGPointMake(kAPPWidth * 0.5, KAppHeight * 0.5);
+        self.waitingView = waitingView;
+        [self addSubview:waitingView];
+    }else{
+        DSProgressView *progressCircleView = [[DSProgressView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 32/2, self.frame.size.height/2 - 32/2, 32, 32)];
+        progressCircleView.tag = kProgressViewTag;
+        [self addSubview:progressCircleView];
+        [progressCircleView startAnimation];
+    }
     //HZWebImage加载图片
     __weak __typeof(self)weakSelf = self;
     [_imageview sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
-        strongSelf.waitingView.progress = (CGFloat)receivedSize / expectedSize;
-        
+        if (self.type != DSPhotoBrowserTypeWeChat) {
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            strongSelf.waitingView.progress = (CGFloat)receivedSize / expectedSize;
+        }
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         [strongSelf.waitingView removeFromSuperview];
-        
+        __weak DSProgressView *progressCircleView = [self viewWithTag:kProgressViewTag];
+        if (progressCircleView) {
+            [progressCircleView stopAnimation];
+            [progressCircleView removeFromSuperview];
+        }
         if (error) {
             //图片加载失败的处理，此处可以自定义各种操作（...）
             
