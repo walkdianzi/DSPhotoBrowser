@@ -26,13 +26,16 @@
                @"PhotoBrowserType":@[
                             @"PushType",
                             @"TransformType",
-                            @"FadeInType"
+                            @"FadeInType",
+                            @"WeixinOne"
                         ],
                @"微信":@[
-                            @"WeixinOne",
+                            @"WeixinTimeLine",
                             @"WeixinTwo",
-                            @"WeixinTimeLine"
                        ],
+               @"么么嗖":@[
+                            @"MMSOne"
+                       ]
              };
     
     _itemsName = @{
@@ -41,13 +44,16 @@
                            @"PushType",
                            @"TransformType",
                            @"FadeInType",
+                           @"FadeInType多图"
                             ],
                    
                    @"微信":@[
                              @"朋友圈列表里的浏览图片",
                              @"微信文章浏览图片",
-                             @"高仿",
                            ],
+                   @"么么嗖":@[
+                             @"么么嗖商品图片浏览"
+                           ]
                    };
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     [self.tableView reloadData];

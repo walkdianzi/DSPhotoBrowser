@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		133A5EF61C578CF500789E75 /* WeixinTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A5EF51C578CF500789E75 /* WeixinTwoViewController.m */; };
+		133B115E1C97DBCD00AF3E02 /* MMSPhotoBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B115D1C97DBCD00AF3E02 /* MMSPhotoBrowserVC.m */; };
+		133B11611C97F0C500AF3E02 /* MMSOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B11601C97F0C500AF3E02 /* MMSOneViewController.m */; };
 		1366CFD81C477BA800A6D178 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFD71C477BA800A6D178 /* main.m */; };
 		1366CFDB1C477BA800A6D178 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFDA1C477BA800A6D178 /* AppDelegate.m */; };
 		1366CFDE1C477BA800A6D178 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366CFDD1C477BA800A6D178 /* ViewController.m */; };
@@ -71,6 +73,10 @@
 /* Begin PBXFileReference section */
 		133A5EF41C578CF500789E75 /* WeixinTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinTwoViewController.h; sourceTree = "<group>"; };
 		133A5EF51C578CF500789E75 /* WeixinTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeixinTwoViewController.m; sourceTree = "<group>"; };
+		133B115C1C97DBCD00AF3E02 /* MMSPhotoBrowserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSPhotoBrowserVC.h; sourceTree = "<group>"; };
+		133B115D1C97DBCD00AF3E02 /* MMSPhotoBrowserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSPhotoBrowserVC.m; sourceTree = "<group>"; };
+		133B115F1C97F0C500AF3E02 /* MMSOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSOneViewController.h; sourceTree = "<group>"; };
+		133B11601C97F0C500AF3E02 /* MMSOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSOneViewController.m; sourceTree = "<group>"; };
 		1366CFD31C477BA800A6D178 /* DSPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1366CFD71C477BA800A6D178 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1366CFD91C477BA800A6D178 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -342,6 +348,8 @@
 				133A5EF51C578CF500789E75 /* WeixinTwoViewController.m */,
 				241A879A1C85C4EF00B63439 /* WeixinTimeLineViewController.h */,
 				241A879B1C85C4EF00B63439 /* WeixinTimeLineViewController.m */,
+				133B115F1C97F0C500AF3E02 /* MMSOneViewController.h */,
+				133B11601C97F0C500AF3E02 /* MMSOneViewController.m */,
 			);
 			path = CustomAppVC;
 			sourceTree = "<group>";
@@ -351,6 +359,8 @@
 			children = (
 				1366D08A1C4C9A5700A6D178 /* WXPhotoBrowserVC.h */,
 				1366D08B1C4C9A5700A6D178 /* WXPhotoBrowserVC.m */,
+				133B115C1C97DBCD00AF3E02 /* MMSPhotoBrowserVC.h */,
+				133B115D1C97DBCD00AF3E02 /* MMSPhotoBrowserVC.m */,
 			);
 			path = CustomBrowserVC;
 			sourceTree = "<group>";
@@ -534,10 +544,12 @@
 				1366D08C1C4C9A5700A6D178 /* WXPhotoBrowserVC.m in Sources */,
 				1366D05D1C47A4E700A6D178 /* UIView+Toast.m in Sources */,
 				1366D05C1C47A4E700A6D178 /* UIView+WebCacheOperation.m in Sources */,
+				133B11611C97F0C500AF3E02 /* MMSOneViewController.m in Sources */,
 				1366D0541C47A4E700A6D178 /* SDWebImageManager.m in Sources */,
 				133A5EF61C578CF500789E75 /* WeixinTwoViewController.m in Sources */,
 				1366D0631C48899900A6D178 /* DSNavigationBarView.m in Sources */,
 				1366D0601C47A96100A6D178 /* DSPhotoModel.m in Sources */,
+				133B115E1C97DBCD00AF3E02 /* MMSPhotoBrowserVC.m in Sources */,
 				1366D0891C4C996900A6D178 /* StyledPageControl.m in Sources */,
 				1366CFD81C477BA800A6D178 /* main.m in Sources */,
 				1366D00F1C477E7600A6D178 /* RootViewController.m in Sources */,

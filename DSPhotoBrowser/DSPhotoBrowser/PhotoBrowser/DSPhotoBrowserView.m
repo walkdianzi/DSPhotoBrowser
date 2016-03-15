@@ -119,8 +119,8 @@
     } else {
         [self.scrollview setZoomScale:1.0 animated:YES]; //还原
     }
-    
 }
+
 #pragma mark 单击
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
@@ -309,7 +309,6 @@
         self.scrollview.contentSize = self.imageview.frame.size;
     }
     self.scrollview.contentOffset = CGPointZero;
-    
 }
 
 - (CGPoint)centerOfScrollViewContent:(UIScrollView *)scrollView
