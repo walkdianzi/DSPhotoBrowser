@@ -14,6 +14,8 @@
 @property(nonatomic, strong)UIViewController   *handleVC;
 @property(nonatomic, strong)NSArray            *photoModels;        //图片数组
 
+/*-------非必选------*/
+@property(nonatomic, assign)NSInteger          selectIndex;
 
 - (void)show;
 - (void)dismiss;

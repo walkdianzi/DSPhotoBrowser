@@ -12,6 +12,7 @@
 
 
 #define kImageBaseTag 6666
+#define kMaxZoomScale 2.0f
 
 @interface MMSPhotoBrowserVC ()<UIScrollViewDelegate>{
     
@@ -56,8 +57,9 @@
         _scrollview.delegate = self;
         _scrollview.clipsToBounds = YES;
         _scrollview.minimumZoomScale = 1;
-        _scrollview.maximumZoomScale = 2;
+        _scrollview.maximumZoomScale = kMaxZoomScale;
         _scrollview.showsVerticalScrollIndicator = NO;
+        _scrollview.showsHorizontalScrollIndicator = NO;
         self.scrollview.zoomScale = 1.0f;
     }
     return _scrollview;
@@ -189,15 +191,22 @@
             
             DSPhotoModel *photoModel = [_photoModels objectAtIndex:i];
             
-            [imgView sd_setImageWithURL:[NSURL URLWithString:photoModel.image_HD_U] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                
-                if (image) {
-                    CGSize size = image.size;
-                    CGFloat showHeight = size.height*_contentView.frame.size.width/size.width;
-                    imgView.frame = CGRectMake(0.f,0.f,_contentView.frame.size.width,showHeight);
-                    [self performSelectorOnMainThread:@selector(refreshPicViewFrame) withObject:nil waitUntilDone:NO];
-                }
-            }];
+            if (photoModel.image) {
+                [imgView setImage:photoModel.image];
+                CGSize size = photoModel.image.size;
+                CGFloat showHeight = size.height*_contentView.frame.size.width/size.width;
+                imgView.frame = CGRectMake(0.f,0.f,_contentView.frame.size.width,showHeight);
+                [self performSelectorOnMainThread:@selector(refreshPicViewFrame) withObject:nil waitUntilDone:NO];
+            }else{
+                [imgView sd_setImageWithURL:[NSURL URLWithString:photoModel.image_HD_U] placeholderImage:[UIImage imageNamed:@"shang_pin_mo_ren_tu_pian"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                    if (image) {
+                        CGSize size = image.size;
+                        CGFloat showHeight = size.height*_contentView.frame.size.width/size.width;
+                        imgView.frame = CGRectMake(0.f,0.f,_contentView.frame.size.width,showHeight);
+                        [self performSelectorOnMainThread:@selector(refreshPicViewFrame) withObject:nil waitUntilDone:NO];
+                    }
+                }];
+            }
         }
         if ([_photoModels count] == 1) {
             imgView.center = CGPointMake(_contentView.frame.size.width/2, _contentView.frame.size.height/2);
@@ -209,8 +218,28 @@
     
     if ([_photoModels count] == 1) {
         
-        UIImageView *view = (UIImageView*)[_contentView viewWithTag:kImageBaseTag];
-        view.center = CGPointMake(_contentView.frame.size.width/2, _contentView.frame.size.height/2);
+        CGRect frame = self.scrollview.frame;
+        
+        UIImageView *imageview = (UIImageView*)[_contentView viewWithTag:kImageBaseTag];
+        CGRect imageFrame = imageview.frame;
+        
+        //根据图片大小找到最大缩放等级，保证最大缩放时候，不会有黑边
+        CGFloat maxScale = frame.size.height/imageFrame.size.height;
+        maxScale = frame.size.width/imageFrame.size.width>maxScale?frame.size.width/imageFrame.size.width:maxScale;
+        //超过了设置的最大的才算数
+        maxScale = maxScale>kMaxZoomScale?maxScale:kMaxZoomScale;
+        //初始
+        
+        self.scrollview.minimumZoomScale = 1;
+        self.scrollview.maximumZoomScale = maxScale;
+        self.scrollview.zoomScale = 1.0f;
+        
+        _contentView.frame = imageFrame;
+        self.scrollview.contentSize = imageview.frame.size;
+        _contentView.center = [self centerOfScrollViewContent:self.scrollview];
+        imageview.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+        
+        self.scrollview.contentOffset = CGPointZero;
     }else{
         float _offsetYY = 0;
         for(int i=0;i<[_contentView.subviews count];i++){
@@ -221,12 +250,43 @@
         _contentView.frame = CGRectMake(0, 0, _contentView.frame.size.width, _offsetYY);
         _scrollview.contentSize = CGSizeMake(_contentView.frame.size.width, _offsetYY);
     }
+    
+    if (_selectIndex && _selectIndex<[_photoModels count]) {
+        UIImageView  *selectView = [_contentView viewWithTag:kImageBaseTag + _selectIndex];
+        if (selectView) {
+            if(selectView.center.y>_scrollview.contentSize.height - _scrollview.frame.size.height/2){
+                
+                _scrollview.contentOffset = CGPointMake(0, _scrollview.contentSize.height - _scrollview.frame.size.height);
+            }else{
+                
+                _scrollview.contentOffset = CGPointMake(0, selectView.frame.origin.y);
+            }
+        }
+    }
+}
+
+- (CGPoint)centerOfScrollViewContent:(UIScrollView *)scrollView
+{
+    CGFloat offsetX = (scrollView.bounds.size.width > scrollView.contentSize.width)?
+    (scrollView.bounds.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
+    CGFloat offsetY = (scrollView.bounds.size.height > scrollView.contentSize.height)?
+    (scrollView.bounds.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
+    CGPoint actualCenter = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
+                                       scrollView.contentSize.height * 0.5 + offsetY);
+    return actualCenter;
 }
 
 #pragma mark UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     
     return self.contentView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView //这里是缩放进行时调整
+{
+    if ([_photoModels count] == 1) {
+        self.contentView.center = [self centerOfScrollViewContent:self.scrollview];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

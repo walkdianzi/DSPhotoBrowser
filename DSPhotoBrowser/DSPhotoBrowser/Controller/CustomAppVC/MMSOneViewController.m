@@ -67,6 +67,7 @@
     MMSPhotoBrowserVC *VC = [[MMSPhotoBrowserVC alloc] init];
     VC.handleVC = self;
     VC.photoModels = _photoModels;
+    VC.selectIndex = tapGesture.view.tag;
     [VC show];
 }
 
