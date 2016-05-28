@@ -22,14 +22,14 @@
 3. MMSPhotoBrowserVC里加入长按保存图片功能
 
 #版本迭代
-
- ##1.0 
-
- 第一版微信朋友圈的图片浏览形式
-
+ 
  ##1.1
 
  DSPhotoBrowserView里加入可以直接加载image，原来只能加载图片的url
+ 
+ ##1.0 
+
+ 第一版微信朋友圈的图片浏览形式
 
 #参考
 [HZPhotoBrowser](https://github.com/chennyhuang/HZPhotoBrowser)   
