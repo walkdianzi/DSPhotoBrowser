@@ -249,6 +249,11 @@
     }];
 }
 
+- (void)setImageWithImage:(UIImage *)image{
+    
+    [_imageview setImage:image];
+}
+
 - (void)reloadImage{
     
     [self setImageWithURL:_imageUrl placeholderImage:_placeHolderImage];

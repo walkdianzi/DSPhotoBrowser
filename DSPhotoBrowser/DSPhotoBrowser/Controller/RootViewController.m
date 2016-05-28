@@ -27,7 +27,8 @@
                             @"PushType",
                             @"TransformType",
                             @"FadeInType",
-                            @"WeixinOne"
+                            @"WeixinOne",
+                            @"OnlyImage",
                         ],
                @"微信":@[
                             @"WeixinTimeLine",
@@ -44,7 +45,8 @@
                            @"PushType",
                            @"TransformType",
                            @"FadeInType",
-                           @"FadeInType多图"
+                           @"FadeInType多图",
+                           @"图片为UIImage，不为Url",
                             ],
                    
                    @"微信":@[

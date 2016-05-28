@@ -128,8 +128,12 @@
         DSPhotoBrowserView *view = _scrollView.subviews[index];
         if (view.beginLoadingImage) return;
         
-        [view setImageWithURL:[NSURL URLWithString:photoModel.image_HD_U] placeholderImage:nil];
-        view.beginLoadingImage = YES;
+        if (photoModel.image) {
+            [view setImageWithImage:photoModel.image];
+        }else{
+            [view setImageWithURL:[NSURL URLWithString:photoModel.image_HD_U] placeholderImage:nil];
+            view.beginLoadingImage = YES;
+        }
     }
 }
 

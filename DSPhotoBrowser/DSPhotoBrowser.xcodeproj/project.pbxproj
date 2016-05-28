@@ -49,6 +49,7 @@
 		1366D0831C4C92A300A6D178 /* WeixinOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366D0821C4C92A300A6D178 /* WeixinOneViewController.m */; };
 		1366D0891C4C996900A6D178 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366D0881C4C996900A6D178 /* StyledPageControl.m */; };
 		1366D08C1C4C9A5700A6D178 /* WXPhotoBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1366D08B1C4C9A5700A6D178 /* WXPhotoBrowserVC.m */; };
+		13AA93DA1CF9783600E18CC3 /* OnlyImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13AA93D91CF9783600E18CC3 /* OnlyImageViewController.m */; };
 		241A87991C85990F00B63439 /* DSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 241A87981C85990F00B63439 /* DSProgressView.m */; };
 		241A879C1C85C4EF00B63439 /* WeixinTimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241A879B1C85C4EF00B63439 /* WeixinTimeLineViewController.m */; };
 /* End PBXBuildFile section */
@@ -155,6 +156,8 @@
 		1366D0881C4C996900A6D178 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
 		1366D08A1C4C9A5700A6D178 /* WXPhotoBrowserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXPhotoBrowserVC.h; sourceTree = "<group>"; };
 		1366D08B1C4C9A5700A6D178 /* WXPhotoBrowserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPhotoBrowserVC.m; sourceTree = "<group>"; };
+		13AA93D81CF9783500E18CC3 /* OnlyImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyImageViewController.h; sourceTree = "<group>"; };
+		13AA93D91CF9783600E18CC3 /* OnlyImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyImageViewController.m; sourceTree = "<group>"; };
 		241A87971C85990F00B63439 /* DSProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSProgressView.h; sourceTree = "<group>"; };
 		241A87981C85990F00B63439 /* DSProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSProgressView.m; sourceTree = "<group>"; };
 		241A879A1C85C4EF00B63439 /* WeixinTimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinTimeLineViewController.h; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 				1366D0141C47839E00A6D178 /* TransformTypeViewController.m */,
 				1366D0161C4783B200A6D178 /* FadeInTypeViewController.h */,
 				1366D0171C4783B200A6D178 /* FadeInTypeViewController.m */,
+				13AA93D81CF9783500E18CC3 /* OnlyImageViewController.h */,
+				13AA93D91CF9783600E18CC3 /* OnlyImageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 				1366CFDB1C477BA800A6D178 /* AppDelegate.m in Sources */,
 				1366D05A1C47A4E700A6D178 /* UIImageView+HighlightedWebCache.m in Sources */,
 				1366D0211C4792F400A6D178 /* DSPhotoBrowserVC.m in Sources */,
+				13AA93DA1CF9783600E18CC3 /* OnlyImageViewController.m in Sources */,
 				1366D0521C47A4E700A6D178 /* SDWebImageDownloader.m in Sources */,
 				1366D0501C47A4E700A6D178 /* SDWebImageCompat.m in Sources */,
 				1366D0271C47A16D00A6D178 /* DSWaitingView.m in Sources */,

@@ -20,8 +20,13 @@
 //单击回调
 @property (nonatomic, strong) void (^singleTapBlock)(UITapGestureRecognizer *recognizer);
 
+//使用图片url
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder;
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder withOrginImage:(UIImageView *)orginImageView;
+
+
+//直接使用UIImage
+- (void)setImageWithImage:(UIImage *)image;
 
 @end
