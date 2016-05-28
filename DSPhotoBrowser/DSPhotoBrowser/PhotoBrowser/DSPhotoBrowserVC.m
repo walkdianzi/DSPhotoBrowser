@@ -54,6 +54,10 @@
     [super viewWillAppear:animated];
     _lastVCNavigationBarHidden = _handleVC.navigationController.navigationBarHidden;
     [self.navigationController setNavigationBarHidden:YES];
+    if (!self.isNavigationBar) {
+        //隐藏状态栏
+        self.view.window.windowLevel = UIWindowLevelStatusBar+10.0f;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
