@@ -19,6 +19,8 @@
 
 1. 微信聊天页面图片浏览（图片太大的时候，底部有显示原图按钮）
 2. 微信朋友圈图片浏览时，在浏览页面大图未加载时，从小图变为大图有点模糊问题
+3. DSPhotoBrowserView里加入可以直接加载image，现在是只能加载imageUrl
+4. MMSPhotoBrowserVC里加入长按保存图片功能
 
 #参考
 [HZPhotoBrowser](https://github.com/chennyhuang/HZPhotoBrowser)   
