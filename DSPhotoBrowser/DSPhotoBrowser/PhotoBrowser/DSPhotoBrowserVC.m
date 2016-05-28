@@ -60,6 +60,7 @@
     
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:_lastVCNavigationBarHidden];
+    self.view.window.windowLevel = UIWindowLevelNormal;//显示状态栏
 }
 
 #pragma mark - Init Methon
