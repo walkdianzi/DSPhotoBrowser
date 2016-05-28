@@ -11,7 +11,7 @@
 #import "DSPhotoModel.h"
 #import "DSPhotoBrowserConfig.m"
 #import "DSNavigationBarView.h"
-
+//0.0.2
 @interface DSPhotoBrowserVC()<UIScrollViewDelegate>{
     
     UIScrollView         *_scrollView;        //主scrollView
